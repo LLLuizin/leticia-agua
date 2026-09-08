@@ -1,0 +1,7 @@
+package com.luizin.lembreteagua;
+import android.app.*; import android.media.*; import android.net.Uri; import android.os.*; import android.view.*; import android.widget.*;
+public class AlarmActivity extends Activity {MediaPlayer p; Handler h=new Handler(); public void onCreate(Bundle b){super.onCreate(b);getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON|WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);setContentView(R.layout.activity_alarm);((TextView)findViewById(R.id.message)).setText("Leticia, vai pegar um copo de água agora!!!");((Button)findViewById(R.id.stopButton)).setOnClickListener(v->finishAlarm());start();h.postDelayed(this::finishAlarm,60000);}
+ void start(){try{Uri u=RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);if(u==null)u=RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);p=new MediaPlayer();p.setAudioAttributes(new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build());p.setDataSource(this,u);p.setLooping(true);p.prepare();p.start();}catch(Exception ignored){}}
+ void finishAlarm(){h.removeCallbacksAndMessages(null);if(p!=null){try{if(p.isPlaying())p.stop();}catch(Exception ignored){}p.release();p=null;}((NotificationManager)getSystemService(NOTIFICATION_SERVICE)).cancel(AlarmReceiver.NOTIFICATION_ID);finishAndRemoveTask();}
+ protected void onDestroy(){if(p!=null){try{p.stop();}catch(Exception ignored){}p.release();p=null;}super.onDestroy();}
+}

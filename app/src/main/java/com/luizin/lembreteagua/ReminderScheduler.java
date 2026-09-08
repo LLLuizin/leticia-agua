@@ -1,0 +1,7 @@
+package com.luizin.lembreteagua;
+import android.app.*; import android.content.*; import android.os.Build; import java.util.Calendar;
+public final class ReminderScheduler { private static final int[] HOURS={10,12,14,16,18,20}; private ReminderScheduler(){}
+ public static void scheduleAll(Context c){AlarmManager am=(AlarmManager)c.getSystemService(Context.ALARM_SERVICE); for(int h:HOURS){Calendar x=Calendar.getInstance();x.set(Calendar.HOUR_OF_DAY,h);x.set(Calendar.MINUTE,30);x.set(Calendar.SECOND,0);x.set(Calendar.MILLISECOND,0);if(x.getTimeInMillis()<=System.currentTimeMillis())x.add(Calendar.DAY_OF_YEAR,1);int rc=h*100+30;Intent i=new Intent(c,AlarmReceiver.class);i.putExtra("requestCode",rc);PendingIntent pi=PendingIntent.getBroadcast(c,rc,i,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);if(Build.VERSION.SDK_INT>=31&&canScheduleExactAlarms(c))am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,x.getTimeInMillis(),pi);else am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,x.getTimeInMillis(),pi);}}
+ public static void cancelAll(Context c){AlarmManager am=(AlarmManager)c.getSystemService(Context.ALARM_SERVICE);for(int h:HOURS){int rc=h*100+30;Intent i=new Intent(c,AlarmReceiver.class);PendingIntent pi=PendingIntent.getBroadcast(c,rc,i,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);am.cancel(pi);pi.cancel();}}
+ public static boolean canScheduleExactAlarms(Context c){if(Build.VERSION.SDK_INT<31)return true;return ((AlarmManager)c.getSystemService(Context.ALARM_SERVICE)).canScheduleExactAlarms();}
+}
