@@ -183,7 +183,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="@string/status_inactive"
+            android:text="@string/status_inactive_preview"
             android:textColor="@color/muted"
             android:textSize="14sp" />
 

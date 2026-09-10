@@ -9,7 +9,8 @@
     <string name="activate_button_inactive">ATIVAR LEMBRETES</string>
     <string name="activate_button_active">✓ LEMBRETES ATIVOS</string>
     <string name="disable_button">DESATIVAR</string>
-    <string name="status_active">Lembretes ativos • 10:30 até 20:30</string>
-    <string name="status_inactive">Seis lembretes por dia, a cada 2 horas</string>
+    <string name="status_active_format">Lembretes ativos • %1$s</string>
+    <string name="status_inactive_format">%1$d lembretes por dia, a cada 2 horas</string>
+    <string name="status_inactive_preview">6 lembretes por dia, a cada 2 horas</string>
     <string name="settings_link">Configurar permissão de alarme exato</string>
 </resources>

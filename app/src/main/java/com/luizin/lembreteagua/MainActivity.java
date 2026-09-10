@@ -35,12 +35,11 @@ public class MainActivity extends Activity {
 
   activate.setOnClickListener(v -> {
    requestNotifications();
-   if (!requestExactIfNeeded()) {
-    ReminderScheduler.scheduleAll(this);
-    stateStore.setRemindersEnabled(true);
-    active = true;
-    update();
-   }
+   requestExactIfNeeded();
+   ReminderScheduler.scheduleAll(this);
+   stateStore.setRemindersEnabled(true);
+   active = true;
+   update();
   });
 
   disable.setOnClickListener(v -> {
@@ -62,11 +61,11 @@ public class MainActivity extends Activity {
 
  private void update() {
   if (active) {
-   status.setText(R.string.status_active);
+   status.setText(getString(R.string.status_active_format, ReminderScheduler.scheduleWindowLabel()));
    status.setTextColor(Color.rgb(20, 104, 170));
    activate.setText(R.string.activate_button_active);
   } else {
-   status.setText(R.string.status_inactive);
+   status.setText(getString(R.string.status_inactive_format, ReminderScheduler.reminderCount()));
    status.setTextColor(Color.rgb(109, 140, 166));
    activate.setText(R.string.activate_button_inactive);
   }
