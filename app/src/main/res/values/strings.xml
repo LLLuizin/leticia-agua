@@ -1,8 +1,12 @@
 <resources>
     <string name="greeting_format">Olá %2$s, %1$s!</string>
     <string name="greeting_default">Olá Letícia, Boa tarde!</string>
+    <string name="period_morning">Bom dia</string>
+    <string name="period_afternoon">Boa tarde</string>
+    <string name="period_night">Boa noite</string>
+    <string name="user_name">Letícia</string>
     <string name="subtitle">Bora se hidratar hoje?</string>
-    <string name="avatar_content_description">Avatar da Letícia</string>
+    <string name="avatar_content_description">Avatar de perfil</string>
     <string name="glasses_today">copos hoje</string>
     <string name="motivation">💧  Cada copo de água te deixa mais forte, saudável e com mais energia! 💙</string>
     <string name="next_reminders">🔔  Próximos lembretes</string>

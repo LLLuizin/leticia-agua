@@ -5,14 +5,14 @@ import java.util.Calendar;
 public final class GreetingHelper {
  private GreetingHelper() {}
 
- public static String periodGreeting() {
+ public static int periodGreetingRes() {
   int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
   if (hour < 12) {
-   return "Bom dia";
+   return R.string.period_morning;
   }
   if (hour < 18) {
-   return "Boa tarde";
+   return R.string.period_afternoon;
   }
-  return "Boa noite";
+  return R.string.period_night;
  }
 }

@@ -35,10 +35,12 @@ public class MainActivity extends Activity {
 
   activate.setOnClickListener(v -> {
    requestNotifications();
-   requestExactIfNeeded();
+   if (requestExactIfNeeded()) {
+    return;
+   }
    ReminderScheduler.scheduleAll(this);
-   stateStore.setRemindersEnabled(true);
-   active = true;
+   active = ReminderScheduler.hasAnyScheduled(this);
+   stateStore.setRemindersEnabled(active);
    update();
   });
 
@@ -54,7 +56,7 @@ public class MainActivity extends Activity {
 
  protected void onResume() {
   super.onResume();
-  greeting.setText(getString(R.string.greeting_format, GreetingHelper.periodGreeting(), "Letícia"));
+  greeting.setText(getString(R.string.greeting_format, getString(GreetingHelper.periodGreetingRes()), getString(R.string.user_name)));
   active = stateStore.areRemindersEnabled() && ReminderScheduler.hasAnyScheduled(this);
   update();
  }
