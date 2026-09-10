@@ -48,6 +48,7 @@
                 android:background="@drawable/pill_blue"
                 android:contentDescription="@string/avatar_content_description"
                 android:padding="8dp"
+                android:scaleType="centerInside"
                 android:src="@drawable/ic_avatar_cachos" />
         </LinearLayout>
 

@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
  private TextView greeting;
  private Button activate;
  private ReminderStateStore stateStore;
+ private boolean waitingNotificationPermission;
  private boolean active;
 
  public void onCreate(Bundle b) {
@@ -34,14 +35,14 @@ public class MainActivity extends Activity {
   createChannel();
 
   activate.setOnClickListener(v -> {
-   requestNotifications();
+   if (!ensureNotificationPermission()) {
+    waitingNotificationPermission = true;
+    return;
+   }
    if (requestExactIfNeeded()) {
     return;
    }
-   ReminderScheduler.scheduleAll(this);
-   active = ReminderScheduler.hasAnyScheduled(this);
-   stateStore.setRemindersEnabled(active);
-   update();
+   activateReminders();
   });
 
   disable.setOnClickListener(v -> {
@@ -57,8 +58,20 @@ public class MainActivity extends Activity {
  protected void onResume() {
   super.onResume();
   greeting.setText(getString(R.string.greeting_format, getString(GreetingHelper.periodGreetingRes()), getString(R.string.user_name)));
-  active = stateStore.areRemindersEnabled() && ReminderScheduler.hasAnyScheduled(this);
+  active = stateStore.areRemindersEnabled();
   update();
+ }
+
+ @Override
+ public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+  super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+  if (requestCode == 20) {
+   boolean granted = grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+   if (granted && waitingNotificationPermission && !requestExactIfNeeded()) {
+    activateReminders();
+   }
+   waitingNotificationPermission = false;
+  }
  }
 
  private void update() {
@@ -73,11 +86,13 @@ public class MainActivity extends Activity {
   }
  }
 
- private void requestNotifications() {
+ private boolean ensureNotificationPermission() {
   if (Build.VERSION.SDK_INT >= 33
       && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
    requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 20);
+   return false;
   }
+  return true;
  }
 
  private boolean requestExactIfNeeded() {
@@ -105,5 +120,12 @@ public class MainActivity extends Activity {
    c.enableVibration(true);
    manager.createNotificationChannel(c);
   }
+ }
+
+ private void activateReminders() {
+  ReminderScheduler.scheduleAll(this);
+  active = true;
+  stateStore.setRemindersEnabled(true);
+  update();
  }
 }
