@@ -1,0 +1,15 @@
+<resources>
+    <string name="greeting_format">Olá %2$s, %1$s!</string>
+    <string name="greeting_default">Olá Letícia, Boa tarde!</string>
+    <string name="subtitle">Bora se hidratar hoje?</string>
+    <string name="avatar_content_description">Avatar da Letícia</string>
+    <string name="glasses_today">copos hoje</string>
+    <string name="motivation">💧  Cada copo de água te deixa mais forte, saudável e com mais energia! 💙</string>
+    <string name="next_reminders">🔔  Próximos lembretes</string>
+    <string name="activate_button_inactive">ATIVAR LEMBRETES</string>
+    <string name="activate_button_active">✓ LEMBRETES ATIVOS</string>
+    <string name="disable_button">DESATIVAR</string>
+    <string name="status_active">Lembretes ativos • 10:30 até 20:30</string>
+    <string name="status_inactive">Seis lembretes por dia, a cada 2 horas</string>
+    <string name="settings_link">Configurar permissão de alarme exato</string>
+</resources>

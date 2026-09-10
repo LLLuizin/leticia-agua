@@ -1,8 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_main" android:fillViewport="true"><LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="22dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:paddingTop="8dp" android:paddingBottom="12dp"><LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Olá, Leticia! 👋" android:textColor="@color/text" android:textSize="25sp" android:textStyle="bold"/><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bora se hidratar hoje?" android:textColor="@color/muted" android:textSize="14sp"/></LinearLayout><TextView android:layout_width="44dp" android:layout_height="44dp" android:gravity="center" android:text="⚙️" android:textSize="22sp"/></LinearLayout>
-<LinearLayout android:layout_width="match_parent" android:layout_height="225dp" android:orientation="vertical" android:gravity="center" android:background="@drawable/card_white" android:elevation="2dp"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="💧" android:textSize="62sp"/><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0/6" android:textColor="@color/text" android:textSize="30sp" android:textStyle="bold"/><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="copos hoje" android:textColor="@color/muted" android:textSize="15sp"/></LinearLayout>
-<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="💧  Cada copo de água te deixa mais forte, saudável e com mais energia! 💙" android:textColor="@color/text" android:textSize="15sp" android:background="@drawable/pill_blue" android:layout_marginTop="14dp" android:padding="14dp"/>
-<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="🔔  Próximos lembretes" android:textColor="@color/text" android:textSize="19sp" android:textStyle="bold" android:layout_marginTop="22dp" android:layout_marginBottom="10dp"/>
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/card_white"><TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="◷  10:30   •   Hora de beber água!" android:textColor="@color/text" android:textSize="16sp" android:padding="10dp"/><TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="◷  12:30   •   Hora de beber água!" android:textColor="@color/text" android:textSize="16sp" android:padding="10dp"/><TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="◷  14:30   •   Hora de beber água!" android:textColor="@color/text" android:textSize="16sp" android:padding="10dp"/><TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="◷  16:30   •   Hora de beber água!" android:textColor="@color/text" android:textSize="16sp" android:padding="10dp"/><TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="◷  18:30   •   Hora de beber água!" android:textColor="@color/text" android:textSize="16sp" android:padding="10dp"/><TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="◷  20:30   •   Hora de beber água!" android:textColor="@color/text" android:textSize="16sp" android:padding="10dp"/></LinearLayout>
-<Button android:id="@+id/btnActivate" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ATIVAR LEMBRETES" android:textColor="@color/white" android:textStyle="bold" android:textSize="16sp" android:background="@drawable/pill_pink" android:layout_marginTop="18dp"/><Button android:id="@+id/btnDisable" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="DESATIVAR" android:textColor="@color/text" android:textSize="15sp" android:background="@drawable/pill_blue" android:layout_marginTop="8dp"/><TextView android:id="@+id/status" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Seis lembretes por dia, a cada 2 horas" android:gravity="center" android:textColor="@color/muted" android:textSize="14sp" android:layout_marginTop="12dp"/><TextView android:id="@+id/settingsLink" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Configurar permissão de alarme exato" android:gravity="center" android:textColor="@color/blue" android:textSize="13sp" android:padding="14dp"/></LinearLayout></ScrollView>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="22dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/greeting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/greeting_default"
+                    android:textColor="@color/text"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subtitle"
+                    android:textColor="@color/muted"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/pill_blue"
+                android:contentDescription="@string/avatar_content_description"
+                android:padding="8dp"
+                android:src="@drawable/ic_avatar_cachos" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            android:background="@drawable/card_white"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💧"
+                android:textSize="62sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0/6"
+                android:textColor="@color/text"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/glasses_today"
+                android:textColor="@color/muted"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/pill_blue"
+            android:padding="14dp"
+            android:text="@string/motivation"
+            android:textColor="@color/text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/next_reminders"
+            android:textColor="@color/text"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="◷  10:30   •   Hora de beber água!"
+                android:textColor="@color/text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="◷  12:30   •   Hora de beber água!"
+                android:textColor="@color/text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="◷  14:30   •   Hora de beber água!"
+                android:textColor="@color/text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="◷  16:30   •   Hora de beber água!"
+                android:textColor="@color/text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="◷  18:30   •   Hora de beber água!"
+                android:textColor="@color/text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="◷  20:30   •   Hora de beber água!"
+                android:textColor="@color/text"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnActivate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/pill_pink"
+            android:text="@string/activate_button_inactive"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnDisable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/pill_blue"
+            android:text="@string/disable_button"
+            android:textColor="@color/text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/status_inactive"
+            android:textColor="@color/muted"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/settingsLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="14dp"
+            android:text="@string/settings_link"
+            android:textColor="@color/blue"
+            android:textSize="13sp" />
+    </LinearLayout>
+</ScrollView>
